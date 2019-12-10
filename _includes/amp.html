@@ -1,0 +1,178 @@
+<style amp-boilerplate>
+  body {
+    -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+    -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+    -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+    animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+  }
+  @-webkit-keyframes -amp-start {
+    from {
+      visibility: hidden;
+    }
+    to {
+      visibility: visible;
+    }
+  }
+  @-moz-keyframes -amp-start {
+    from {
+      visibility: hidden;
+    }
+    to {
+      visibility: visible;
+    }
+  }
+  @-ms-keyframes -amp-start {
+    from {
+      visibility: hidden;
+    }
+    to {
+      visibility: visible;
+    }
+  }
+  @-o-keyframes -amp-start {
+    from {
+      visibility: hidden;
+    }
+    to {
+      visibility: visible;
+    }
+  }
+  @keyframes -amp-start {
+    from {
+      visibility: hidden;
+    }
+    to {
+      visibility: visible;
+    }
+  }
+</style>
+
+<noscript>
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: none;
+      -moz-animation: none;
+      -ms-animation: none;
+      animation: none;
+    }
+  </style>
+</noscript>
+
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+{% if site.baseurl == '/amp' %}
+<script async custom-element="amp-call-tracking" src="https://cdn.ampproject.org/v0/amp-call-tracking-0.1.js"></script>
+{% endif %}
+
+<script
+  async
+  custom-element="amp-sidebar"
+  src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"
+></script>
+
+<script
+  async
+  custom-element="amp-accordion"
+  src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"
+></script>
+
+<script
+  async
+  custom-element="amp-bind"
+  src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"
+></script>
+
+<script
+  async
+  custom-element="amp-iframe"
+  src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"
+></script>
+
+<script
+  async
+  custom-element="amp-form"
+  src="https://cdn.ampproject.org/v0/amp-form-0.1.js"
+></script>
+
+<script
+  async
+  custom-template="amp-mustache"
+  src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"
+></script>
+
+<script
+  async
+  custom-element="amp-lightbox"
+  src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"
+></script>
+
+{% if page.amp_components contains 'amp-carousel' %}
+<script
+  async
+  custom-element="amp-carousel"
+  src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"
+></script>
+{% endif %}
+
+<script
+  async
+  custom-element="amp-list"
+  src="https://cdn.ampproject.org/v0/amp-list-0.1.js"
+></script>
+
+{% if page.amp_components contains 'amp-position-observer' %}
+<script
+  async
+  custom-element="amp-position-observer"
+  src="https://cdn.ampproject.org/v0/amp-position-observer-0.1.js"
+></script>
+{% endif %}
+
+{% if page.amp_components contains 'amp-animation' %}
+<script
+  async
+  custom-element="amp-animation"
+  src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"
+></script>
+{% endif %}
+
+{% if page.amp_components contains 'amp-date-picker' %}
+<script
+  async
+  custom-element="amp-date-picker"
+  src="https://cdn.ampproject.org/v0/amp-date-picker-0.1.js"
+></script>
+{% endif %}
+
+{% if page.amp_components contains 'amp-youtube' %}
+<script
+  async
+  custom-element="amp-youtube"
+  src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"
+></script>
+{% endif %}
+
+{% if page.amp_components contains 'amp-video' %}
+<script
+  async
+  custom-element="amp-video"
+  src="https://cdn.ampproject.org/v0/amp-video-0.1.js"
+></script>
+{% endif %}
+
+{% if page.amp_components contains 'amp-fx' %}
+<script
+  async
+  custom-element="amp-fx-collection"
+  src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"
+></script>
+{% endif %}
+
+
+{% if page.amp_components contains 'amp-fit-text' %}
+<script
+  async
+  custom-element="amp-fit-text"
+  src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"
+></script>
+{% endif %}

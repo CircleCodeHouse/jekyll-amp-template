@@ -1,0 +1,13 @@
+---
+layout: default
+permalink: '/'
+title: Homepage
+head_title: ''
+description: ''
+---
+
+{% for _page in site.pages %}
+  {% if _page.settings %}
+    {% assign settings = _page %}
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,53 @@
+{% for _page in site.pages %}
+  {% if _page.settings %}
+    {% assign settings = _page %}
+  {% endif %}
+{% endfor %}
+<!-- htmllint preset="none" -->
+<!DOCTYPE html>
+<html {% if site.baseurl == '/amp' %}amp{% endif %}>
+
+<head>
+  {% include google-tag-manager-head.html %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    {{ page.head_title | default: settings.head_title | liquify }}
+  </title>
+  <meta name="description" content="{{ page.description | liquify }}">
+  {% capture favicon %}{% file_exists _includes/favicon.html %}{% endcapture %}
+  {% if favicon == "true" %}{% include favicon.html %}{% endif %}
+  <!-- htmllint preset="none" -->
+  <style amp-custom>
+    :root {
+      --brand-primary-light: {{ settings.primary_light_color | replace: 'rgb(', '' | replace: ')', '' }};
+      --brand-primary-dark: {{ settings.primary_dark_color | replace: 'rgb(', '' | replace: ')', '' }};
+      --brand-secondary-light: {{ settings.secondary_light_color | replace: 'rgb(', '' | replace: ')', '' }};
+      --brand-secondary-dark: {{ settings.secondary_dark_color | replace: 'rgb(', '' | replace: ')', '' }};
+    }
+    {% capture css %}{% file_exists _includes/css.html %}{% endcapture %}
+    {% if css == "true" %}{% include css.html %}{% endif %}
+  </style>
+  {% include amp.html %}
+  <!-- htmllint preset="$previous" -->
+  {% if site.baseurl == '/amp' %}
+  <link rel="canonical" href="{{ settings.url }}{{ page.url }}">
+  {% else %}
+    <link rel="amphtml" href="{{ settings.url }}/amp{{ page.url }}">
+  {% endif %}
+</head>
+
+<body>
+  {% include google-tag-manager-body.html %}
+  {% include header.html %}
+  <div class="d-flex flex-column justify-content-between min-vh-100">
+    <main class="d-flex flex-column flex-grow-1">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+  </div>
+</body>
+
+</html>
+<!-- htmllint preset="none" -->

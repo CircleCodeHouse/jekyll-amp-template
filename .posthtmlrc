@@ -1,0 +1,10 @@
+{
+  "input": "_site/**/*.html",
+  "output": "_site",
+  "plugins": {
+    "posthtml-img-autosize": {
+      "root": "./",
+      "processEmptySize": true
+    }
+  }
+}

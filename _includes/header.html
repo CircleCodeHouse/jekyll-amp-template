@@ -1,0 +1,145 @@
+{% for _page in site.pages %}
+  {% if _page.settings %}
+    {% assign settings = _page %}
+  {% endif %}
+{% endfor %}
+<div class="container position-absolute">
+  <amp-sidebar on="tap:sidebar.open" tabindex="-1" role="navigation" id="sidebar"
+    class="m-0 bg-brand-secondary-dark d-flex d-lg-none flex-column align-items-start justify-content-start"
+    layout="nodisplay" side="right" hidden="">
+
+    <div class="mt-4" on="tap:sidebar.open" tabindex="-1" role="dialog">
+
+
+      <ul class="list-unstyled text-left pl-3">
+
+        <li>
+          <a href="/how-to-apply/" class="hover-brand-primary-dark">
+            <span class="h5 text-white py-2 mb-2 d-flex align-items-center" tabindex="0">
+              HOW TO APPLY
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/tuition/" class="hover-brand-primary-dark">
+            <span class="h5 text-white py-2 mb-2 d-flex align-items-center" tabindex="0">
+              TUITION
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/students/" class="hover-brand-primary-dark">
+            <span class="h5 text-white py-2 mb-2 d-flex align-items-center" tabindex="0">
+              STUDENTS
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="/contact/" class="hover-brand-primary-dark">
+            <span class="h5 text-white py-2 mb-2 d-flex align-items-center" tabindex="0">
+              CONTACT
+            </span>
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+  </amp-sidebar>
+</div>
+
+
+<header id="header" class="u-header--navbar-bg bg-light w-100 flex-wrap shadow-sm">
+  <div class="container-fluid bg-brand-primary-dark text-white">
+    <div class="container d-flex justify-content-end">
+      <span class="d-flex align-items-center"><i class="fas fa-phone" aria-hidden="true"></i>&nbsp;<a class="text-white" href="tel:{{ settings.phone }}">{{ settings.phone | phone_number }}</a></span>
+      <a class="text-white ml-3" target="_blank" rel="noopener" href="{{ settings.facebook }}">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a class="text-white ml-3" target="_blank" rel="noopener" href="{{ settings.instagram }}">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="u-header__section bg-primary-dark">
+    <!-- htmllint preset="$previous" -->
+    <div class="container-fluid px-md-0 px-lg-1">
+      <!-- Nav -->
+      <nav class="navbar navbar-expand-lg u-header__navbar u-header__navbar--no-space flex-row flex-wrap container">
+        <div class="flex-grow-1 d-flex justify-content-between">
+          <div style="max-width: 350px;" class="flex-grow-1">
+            <!-- Logo -->
+            <a class="navbar-logo flex-grow-1" href="/" aria-label="Logo">
+              <!-- htmllint preset="none" -->
+              <amp-img layout="responsive" alt="{{ settings.name }} Home" src="{{ settings.logo }}"></amp-img>
+              <!-- htmllint preset="$previous" -->
+              <span class="sr-only">{{ settings.name }} Logo</span>
+            </a>
+            <!-- End Logo -->
+          </div>
+
+          <!-- Responsive Toggle Button -->
+          <div class="d-flex flex-grow-0 align-items-center">
+            <button class="btn btn-link d-flex text-white bg-brand-primary-dark justify-content-end d-lg-none"
+              on="tap:sidebar.open" tabindex="0" role="button">
+              <i class="fas fa-bars fa-2x" aria-hidden="true"></i><span class="sr-only">Open navigation menu</span>
+            </button>
+          </div>
+
+          <!-- End Responsive Toggle Button -->
+        </div>
+        <!-- Navigation -->
+        <div id="nav-bar" class="collapse navbar-collapse u-header__navbar-collapse d-none d-lg-flex flex-grow-0">
+          <ul class="navbar-nav u-header__navbar-nav ml-auto">
+
+            <li class="nav-item u-header__nav-item ml-lg-3 ml-xl-4">
+              <a class="p-0" href="/how-to-apply/">
+                <span class="text-brand-primary-light hover-brand-primary-dark d-flex flex-column text-center align-items-center">
+                  HOW TO APPLY
+                </span>
+              </a>
+            </li>
+
+            <li class="nav-item u-header__nav-item ml-lg-3 ml-xl-4">
+
+              <!-- htmllint preset="none" -->
+              <a class=" hover-brand-primary-dark" href="/tuition/">
+                <!-- htmllint preset="$previous" -->
+                <span class="text-brand-primary-light hover-brand-primary-dark d-flex flex-column text-center align-items-center">
+                  TUITION
+                </span>
+              </a>
+
+            </li>
+
+            <li class="nav-item u-header__nav-item ml-lg-3 ml-xl-4">
+              <!-- htmllint preset="none" -->
+              <a class=" hover-brand-primary-dark" href="/students/">
+                <!-- htmllint preset="$previous" -->
+                <span class="text-brand-primary-light hover-brand-primary-dark d-flex flex-column text-center align-items-center">
+                  STUDENTS
+                </span>
+              </a>
+            </li>
+            <li class="nav-item u-header__nav-item ml-lg-3 ml-xl-4">
+
+              <!-- htmllint preset="none" -->
+              <a class=" hover-brand-primary-dark" href="/contact/">
+                <!-- htmllint preset="$previous" -->
+                <span class="text-brand-primary-light hover-brand-primary-dark d-flex flex-column text-center align-items-center">CONTACT</span>
+              </a>
+
+            </li>
+
+          </ul>
+        </div>
+        <!-- End Navigation -->
+      </nav>
+      <!-- End Nav -->
+    </div>
+  </div>
+</header>

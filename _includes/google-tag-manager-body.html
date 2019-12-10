@@ -1,0 +1,15 @@
+{% for _page in site.pages %}
+  {% if _page.settings %}
+    {% assign settings = _page %}
+  {% endif %}
+{% endfor %}
+<!-- htmllint preset="none" -->
+{% if site.baseurl == '/amp' %}
+<amp-analytics config="https://www.googletagmanager.com/amp.json?id={{ settings.google_tag_manager_amp }}&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
+{% else %}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ settings.google_tag_manager }}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+{% endif %}
+<!-- htmllint preset="$previous" -->

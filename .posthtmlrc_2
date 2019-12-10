@@ -1,0 +1,10 @@
+{
+  "input": "_site/**/*.html",
+  "output": "_site",
+  "plugins": {
+    "posthtml-amp-img": {},
+    "posthtml-webp": {
+      "replaceExtension": true
+    }
+  }
+}

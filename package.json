@@ -1,0 +1,83 @@
+{
+  "name": "vandelay-education-local",
+  "version": "1.0.0",
+  "repository": "https://github.com/VandelayEducation/vandelay-education-local",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "build": "yarn css && yarn jekyll-build && yarn jekyll-build-amp && yarn optimize",
+    "cname": "echo $(echo $JEKYLL_ENV)$(echo $KEY) >> _site/CNAME",
+    "css": "node _javascripts/postcss.js && cat assets/css/main.min.css > _includes/css.html",
+    "deploy": "yarn cname && gh-pages --repo git@github.com:CircleCodeHouse/$(echo $JEKYLL_ENV)$(echo $KEY).git -d ./_site -t",
+    "encrypt": "set -e && find ./_site -type f -name '*.html' -exec staticrypt -f _javascripts/password_template.html {} $PASSWORD -o {} \\;",
+    "favicon": "real-favicon generate _site/favicon.json faviconData.json assets/favicons/ && yarn favicon-inject",
+    "favicon-inject": "echo '' > _includes/favicon.html && real-favicon inject faviconData.json assets/favicons _includes/favicon.html && mv assets/favicons/favicon.html _includes/favicon.html",
+    "html": "posthtml -c .posthtmlrc && sleep 4 && posthtml -c .posthtmlrc_2",
+    "images": "imagemin assets/uploads/* --out-dir=assets/uploads/ && imagemin assets/uploads/* --out-dir=assets/uploads/ --plugin=webp",
+    "jekyll-build": "bundle exec jekyll build --config _config.yml",
+    "jekyll-build-amp": "bundle exec jekyll build --config _config.yml,_amp.yml --destination _site/amp/",
+    "lint": "yarn lint-html && yarn lint-css",
+    "lint-css": "stylelint ./**/*.css",
+    "lint-html": "htmllint {*.html,./_includes/*.html,./_layouts/*.html,./partials/*.html}",
+    "optimize": "yarn html && find _site/amp -name \"*.html\" | while read fname; do npx amp optimize \"$fname\" > \"$fname-temp\" && mv \"$fname-temp\" \"$fname\"; done",
+    "pa11y": "pa11y-ci",
+    "sitemap": "./node_modules/.bin/sitemap-generator https://$(echo $KEY) -v",
+    "start": "JEKYLL_ENV='preview.' concurrently \"http-server _site -p 8080 -a 0.0.0.0 -s\" \"npm-watch\"",
+    "test": "yarn lint"
+  },
+  "devDependencies": {
+    "@ampproject/toolbox-cli": "^1.0.1",
+    "@fortawesome/fontawesome-free": "^5.10.1",
+    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "bootstrap": "^4.4.1",
+    "change-case": "^3.1.0",
+    "cli-real-favicon": "^0.0.8",
+    "concurrently": "^4.1.1",
+    "cssnano": "^4.1.10",
+    "cssnano-preset-advanced": "^4.0.7",
+    "csv-parser": "^2.3.0",
+    "front-matter": "^3.0.2",
+    "gh-pages": "^2.1.1",
+    "htmllint-cli": "^0.0.7",
+    "http-server": "^0.11.1",
+    "imagemin-cli": "^5.0.0",
+    "imagemin-webp": "^5.1.0",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15",
+    "luxon": "^1.17.2",
+    "npm-watch": "^0.6.0",
+    "pa11y-ci": "^2.3.0",
+    "postcss": "^7.0.17",
+    "postcss-amp": "^1.4.0",
+    "postcss-amp-custom": "^1.1.3",
+    "postcss-each": "^0.10.0",
+    "postcss-for": "^2.1.1",
+    "postcss-import": "^12.0.1",
+    "postcss-no-important": "^3.0.1",
+    "posthtml-amp-img": "kevincolten/posthtml-amp-img",
+    "posthtml-cli": "kevincolten/posthtml-cli#nested-paths",
+    "posthtml-img-autosize": "kevincolten/posthtml-img-autosize#amp-img",
+    "posthtml-webp": "^1.2.0",
+    "qs": "^6.7.0",
+    "sitemap-generator-cli": "^4.3.0",
+    "staticrypt": "^1.3.2",
+    "stylelint": "^9.9.0",
+    "stylelint-config-recommended": "^2.2.0",
+    "url-parse": "^1.4.7",
+    "yaml": "^1.6.0"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "./*"
+      ],
+      "extensions": "html,css,md",
+      "ignore": [
+        "_site",
+        "node_modules",
+        "assets/css/main.min.css",
+        "_includes/css.html"
+      ]
+    }
+  }
+}
