@@ -43,7 +43,7 @@
     "imagemin-cli": "^5.0.0",
     "imagemin-webp": "^5.1.0",
     "js-yaml": "^3.13.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "luxon": "^1.17.2",
     "npm-watch": "^0.6.0",
     "pa11y-ci": "^2.3.0",
