@@ -58,7 +58,7 @@
     "posthtml-cli": "kevincolten/posthtml-cli#nested-paths",
     "posthtml-img-autosize": "kevincolten/posthtml-img-autosize#amp-img",
     "posthtml-webp": "^1.2.0",
-    "qs": "^6.7.0",
+    "qs": "^6.9.7",
     "sitemap-generator-cli": "^4.3.0",
     "staticrypt": "^1.3.2",
     "stylelint": "^9.9.0",
